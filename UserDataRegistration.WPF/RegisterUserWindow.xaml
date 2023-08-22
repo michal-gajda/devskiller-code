@@ -1,0 +1,91 @@
+<Window
+    x:Class="UserDataRegistration.WPF.RegisterUserWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:UserDataRegistration.Model;assembly=UserDataRegistration.Model"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <vm:UserDataViewModel />
+    </Window.DataContext>
+    <Grid
+        x:Name="grid"
+        Margin="20"
+        x:FieldModifier="public">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="titleRow" Height="100" />
+            <RowDefinition x:Name="nameRow" Height="40" />
+            <RowDefinition x:Name="agreementRow" Height="40" />
+            <RowDefinition x:Name="buttonRow" Height="40" />
+            <RowDefinition x:Name="emptyRow" />
+        </Grid.RowDefinitions>
+        <Label
+            x:Name="labTitle"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            HorizontalContentAlignment="Center"
+            x:FieldModifier="public"
+            Content="Registration"
+            FontFamily="Tahoma"
+            FontSize="40" />
+        <Label
+            x:Name="labFirstName"
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalContentAlignment="Right"
+            x:FieldModifier="public"
+            Content="First name" />
+        <TextBox
+            x:Name="edFirstName"
+            Grid.Row="1"
+            Grid.Column="1"
+            x:FieldModifier="public"
+            Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Label
+            x:Name="labLastName"
+            Grid.Row="1"
+            Grid.Column="2"
+            HorizontalAlignment="Right"
+            x:FieldModifier="public"
+            Content="Last name" />
+        <TextBox
+            x:Name="edLastName"
+            Grid.Row="1"
+            Grid.Column="3"
+            x:FieldModifier="public"
+            Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <CheckBox
+            x:Name="edAggree"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Bottom"
+            x:FieldModifier="public"
+            Content="I agree"
+            IsChecked="{Binding Agree, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            x:Name="btnRegister"
+            Grid.Row="3"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            x:FieldModifier="public"
+            Click="btnRegister_Click"
+            Content="Register" />
+        <Label
+            x:Name="labResult"
+            Grid.Row="4"
+            Grid.Column="0"
+            x:FieldModifier="public"
+            Content="Label" />
+    </Grid>
+</Window>
